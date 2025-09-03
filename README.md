@@ -26,7 +26,7 @@ DBML (for ER Diagram)
 
 📂 Dataset
 
-NYC Taxi Trip Data (Kaggle dataset: https://www.kaggle.com/datasets/anandaramg/taxi-trip-data-nyc?utm_source=chatgpt.com )
+NYC Taxi Trip Data (Kaggle dataset: https://www.kaggle.com/datasets/anandaramg/taxi-trip-data-nyc)
 
 Fields include: VendorID, pickup/dropoff timestamps, passenger count, trip distance, location IDs, payment details, fare, tips, and total amount.
 
