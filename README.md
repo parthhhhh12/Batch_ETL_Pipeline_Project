@@ -1,72 +1,106 @@
-📊 Batch ETL Pipeline using PySpark on Azure Databricks
-📖 Project Overview
+# 📊 Batch ETL Pipeline using PySpark on Azure Databricks  
 
-This project demonstrates the design and implementation of a batch ETL pipeline using PySpark on Azure Databricks.
+---
 
-The pipeline processes the NYC Taxi Trip dataset from raw CSV files into cleaned, structured, and aggregated Parquet files, which are stored in Azure Blob Storage for efficient analytics and reporting.
+## 📖 Project Overview  
 
-🎯 Objectives
+This project demonstrates the design and implementation of a **batch ETL pipeline** using **PySpark in Azure Databricks**.  
 
-📥 Read raw CSV data from Azure Blob Storage
+The pipeline processes the **NYC Taxi Trip dataset** from raw CSV into cleaned, structured, and aggregated datasets.  
+The final output is stored in **Parquet format** within **Azure Blob Storage** for efficient analytics and reporting.  
 
-🧹 Perform data cleaning, filtering, and type casting
+---
 
-📊 Apply aggregations (e.g., total rides per vendor per day)
+## 🎯 Objectives  
 
-💾 Store final results in Parquet format back to Azure Blob Storage
+- 📥 Ingest raw CSV data from **Azure Blob Storage**  
+- 🧹 Perform **data cleaning, filtering, and type casting**  
+- 📊 Apply **aggregations** (e.g., total rides per vendor per day)  
+- 💾 Store the final results in **Parquet format** back into Azure Blob Storage  
 
-🛠️ Tools & Technologies
+---
 
-🔹 Azure Databricks
+## 🛠️ Tools & Technologies  
 
-🔹 PySpark
+- 🔹 **Azure Databricks**  
+- 🔹 **PySpark**  
+- 🔹 **Azure Blob Storage**  
+- 🔹 **Parquet File Format**  
+- 🔹 **DBML** (for ER Diagram)  
 
-🔹 Azure Blob Storage
+---
 
-🔹 Parquet File Format
+## 📂 Dataset  
 
-🔹 DBML (for ER Diagram)
+**Source:** [NYC Taxi Trip Data – Kaggle](https://www.kaggle.com/datasets/anandaramg/taxi-trip-data-nyc)  
 
-📂 Dataset
+**Schema Highlights:**  
 
-Source: NYC Taxi Trip Data – Kaggle
+- `VendorID`  
+- `pickup_datetime`, `dropoff_datetime`  
+- `passenger_count`, `trip_distance`  
+- `pickup_location_id`, `dropoff_location_id`  
+- `payment details`, `fare_amount`, `tip_amount`, `total_amount`  
 
-Schema Highlights:
+---
 
-VendorID
+## 🔄 ETL Pipeline Steps  
 
-pickup_datetime, dropoff_datetime
+1️⃣ **Ingest Raw Data** → Mount or access Azure Blob Storage to read the CSV file  
 
-passenger_count, trip_distance
+2️⃣ **Read Data** → Use PySpark DataFrame API with `inferSchema` and `header` options  
 
-pickup_location_id, dropoff_location_id
+3️⃣ **Data Cleaning & Transformation** → Apply `.withColumn()` for type casting + filter invalid rows  
 
-fare_amount, tip_amount, total_amount
+4️⃣ **Aggregation** → Compute total rides per vendor per day using `groupBy()` and `count()`  
 
-🔄 ETL Pipeline Steps
+5️⃣ **Load Processed Data** → Store final aggregated data in **Parquet format** back into Azure Blob Storage  
 
-1️⃣ Ingest Raw Data → Load CSV from Azure Blob into Databricks
+6️⃣ **Verification** → Validate results in Azure Cloud Storage  
 
-2️⃣ Data Cleaning & Transformation → Type casting + filtering invalid rows using PySpark
+---
 
-3️⃣ Aggregation → Compute total rides per vendor per day
+## 🗂️ Data Model (ER Diagram)  
 
-4️⃣ Load Processed Data → Write aggregated dataset in Parquet format back to Azure Blob Storage
+- **RawTripData** → Raw input table with all fields from CSV  
+- **CleanedTripData** → Filtered and type-casted dataset  
+- **AggregatedTrips** → Aggregated dataset (rides per vendor per day)  
 
-🗂️ Data Model
+**Relationships:**  
 
-RawTripData → Raw input table (direct from CSV)
+- CleanedTripData is derived from RawTripData  
+- AggregatedTrips references CleanedTripData  
 
-CleanedTripData → Filtered & type-casted dataset
+---
 
-AggregatedTrips → Summary dataset (rides per vendor per day)
+## 📜 Code Overview  
 
-✅ Conclusion
+The PySpark code performs the following operations inside **Databricks Notebook cells**:  
 
-This project demonstrates how PySpark on Azure Databricks can:
+- Read CSV file into DataFrame  
+- Clean and type-cast columns  
+- Filter invalid rows  
+- Aggregate trips per vendor per day  
+- Write results in **Parquet format**  
 
-⚡ Process large-scale datasets in the cloud
+---
 
-🔒 Ensure reliability, scalability, and efficiency
+## ✅ Conclusion  
 
-📈 Deliver analytics-ready data in Parquet format for BI & reporting tools
+This ETL project successfully demonstrates how to:  
+
+- ⚡ Use **PySpark on Azure Databricks** for scalable data processing  
+- 🧹 Perform **data cleaning, transformation, and aggregation**  
+- 💾 Store processed datasets in **Parquet format** for efficient analytics  
+
+The pipeline ensures **scalability, reliability, and performance**, while making data ready for BI and reporting tools.  
+
+---
+
+## 📂 Repository Contents  
+
+- `README.md` → Project documentation (this file)  
+- `Parth_Batch_ETL_Pipeline.docx` → 📥 **Download this file to view the complete detailed project report**  
+
+---
+
