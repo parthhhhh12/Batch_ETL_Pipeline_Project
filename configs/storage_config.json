@@ -1,0 +1,7 @@
+# MOUNTING
+storage_account_name = "deaatraining25"
+container_name = "parth"
+mount_point = "/mnt/parth"
+
+# Use either storage account key or service principal for authentication
+storage_account_access_key = "..."
